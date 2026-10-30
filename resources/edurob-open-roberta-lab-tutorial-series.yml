@@ -1,0 +1,12 @@
+title: EduRob Open Roberta Lab Tutorial Series
+url: https://wiki.robotika.sk/robowiki/images/7/74/Edurob_open_roberta_lab_tutorial_series.pdf
+description: "Lesson-by-lesson classroom material from the EduRob24 summer school: moving a robot, mazes, sensors and line following, all in the Open Roberta simulator."
+leagues:
+  - line
+  - maze
+type: teaching
+level: beginner
+source: EduRob24 Summer School, TU Graz
+audience:
+  - educators
+authors: Pavel Petrovič

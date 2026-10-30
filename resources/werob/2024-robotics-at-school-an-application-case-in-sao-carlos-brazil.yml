@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2024, Eindhoven
+audience:
+  - educators
 year: 2024
 authors: Luís Felipe Rodrigues de Brito Campos, João Alexandre Schiavone and Tatiana de Figueiredo Pereira Alves Taveira Pazelli

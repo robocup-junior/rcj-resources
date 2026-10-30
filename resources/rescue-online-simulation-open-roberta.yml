@@ -1,0 +1,18 @@
+title: Rescue Online Simulation (Open Roberta)
+url: https://www.robocupjunior.at/simulation/
+description: Program a virtual Rescue Line Entry robot in your browser with Open Roberta Lab, with no robot hardware needed. Includes rules, tutorials, a map editor and example maps.
+leagues:
+  - line
+type: code
+level: beginner
+source: RoboCupJunior Austria
+audience:
+  - students
+  - educators
+links:
+  - label: Rules (PDF)
+    url: https://drive.google.com/file/d/1VniRDuwY4BQN05IXv_uKikN_-GDw7y8W/view
+  - label: Open Roberta wiki
+    url: https://jira.iais.fraunhofer.de/wiki/spaces/ORInfo/pages/402492036/Programming+RCJ+RescueOnlineSim
+  - label: Example maps
+    url: https://drive.google.com/drive/folders/1Ei90nvc8_6CAER5haSse021T6Pq-nw0J

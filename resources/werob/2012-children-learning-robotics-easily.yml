@@ -6,6 +6,8 @@ leagues:
 type: werob
 level: beginner
 source: WEROB 2012, Mexico City
+audience:
+  - educators
 year: 2012
 authors: Fernando Ribeiro, Nino Pereira, José Cruz and Gil Lopes
 links:

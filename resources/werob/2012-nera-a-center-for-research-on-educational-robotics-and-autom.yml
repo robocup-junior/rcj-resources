@@ -6,6 +6,8 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2012, Mexico City
+audience:
+  - educators
 year: 2012
 authors: Felipe N. Martins, Hudson Cassio G. Oliveira and Eduardo Max Amaral
 links:

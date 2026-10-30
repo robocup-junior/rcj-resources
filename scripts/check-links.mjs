@@ -15,7 +15,7 @@ const { resources, errors } = loadAll(files);
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 
 // These sites answer scripts with 403/429 (Cloudflare and similar) even when the page exists.
-const BOT_WALLED = ['printables.com', 'thingiverse.com', 'mathworks.com', 'instructables.com', 'youtube.com', 'youtu.be', 'facebook.com', 'linkedin.com'];
+const BOT_WALLED = ['printables.com', 'sagepub.com', 'doi.org', 'thingiverse.com', 'mathworks.com', 'instructables.com', 'youtube.com', 'youtu.be', 'facebook.com', 'linkedin.com'];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 rcj-resources-link-check';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 

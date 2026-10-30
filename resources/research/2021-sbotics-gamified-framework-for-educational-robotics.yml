@@ -1,0 +1,12 @@
+title: "sBotics: Gamified Framework for Educational Robotics"
+url: https://link.springer.com/article/10.1007/s10846-021-01364-8
+description: The design of sBotics, a free robotics simulator built to make educational robotics accessible without hardware.
+leagues:
+  - general
+type: research
+level: intermediate
+source: Journal of Intelligent and Robotic Systems
+audience:
+  - educators
+year: 2021
+authors: Lucas Moura do Nascimento, Davi Souto Neri, Thiago Ferreira, Francinaldo de Almeida Pereira, Erika Akemi Yanaguibashi Albuquerque, Luiz Marcos Garcia Gonçalves and Sarah Thomaz de Lima Sá

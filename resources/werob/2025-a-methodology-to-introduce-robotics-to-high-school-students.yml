@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: beginner
 source: WEROB 2025, Salvador
+audience:
+  - educators
 year: 2025
 authors: Enzo Evandro Lima Costa, Guilherme Ferreira Bispo dos Santos, Maria Clara Ribeiro Andrade, Robert Figueiredo Pinto Silva, Éberlon Rodrigues Procópio Araujo, Ana Patrícia Fontes Magalhaes Mascarenhas and Josemar Rodrigues de Souza

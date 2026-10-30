@@ -6,5 +6,8 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2024, Eindhoven
+audience:
+  - educators
+  - organizers
 year: 2024
 authors: Abdullah Murtadha Alfakhrey

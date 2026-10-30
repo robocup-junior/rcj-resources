@@ -6,3 +6,6 @@ leagues:
 type: rules
 level: intermediate
 source: RoboCupJunior
+audience:
+  - educators
+  - organizers

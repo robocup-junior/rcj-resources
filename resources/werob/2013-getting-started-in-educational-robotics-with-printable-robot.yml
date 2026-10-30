@@ -6,6 +6,8 @@ leagues:
 type: werob
 level: beginner
 source: WEROB 2013, Eindhoven
+audience:
+  - educators
 year: 2013
 authors: Eduardo Gallego, Nerea de la Riva and Ivan Gallego
 links:

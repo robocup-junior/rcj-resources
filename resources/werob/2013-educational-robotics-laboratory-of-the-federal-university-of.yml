@@ -6,6 +6,8 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2013, Eindhoven
+audience:
+  - educators
 year: 2013
 authors: Carmen Ribeiro Faria Santos
 links:

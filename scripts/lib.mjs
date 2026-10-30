@@ -22,6 +22,8 @@ export const TYPES = {
   field: 'Fields and equipment',
   video: 'Videos and inspiration',
   community: 'Community',
+  teaching: 'Teaching and curriculum',
+  research: 'Research papers',
   werob: 'WEROB talks and papers',
 };
 export const LEVELS = {
@@ -29,8 +31,14 @@ export const LEVELS = {
   intermediate: 'Intermediate',
   advanced: 'Advanced',
 };
+// Optional. Leave it out for resources aimed at teams; list who else it is especially useful for.
+export const AUDIENCES = {
+  students: 'Students',
+  educators: 'Educators',
+  organizers: 'Organizers',
+};
 
-const FIELDS = ['title', 'url', 'description', 'leagues', 'type', 'level', 'source', 'year', 'authors', 'links'];
+const FIELDS = ['title', 'url', 'description', 'leagues', 'type', 'level', 'source', 'audience', 'year', 'authors', 'links'];
 const REQUIRED = ['title', 'url', 'description', 'leagues', 'type', 'level', 'source'];
 
 export function slugify(s) {
@@ -67,6 +75,10 @@ export function validate(r) {
   if (r.type !== undefined && !TYPES[r.type]) errors.push(`unknown type "${r.type}" (use: ${Object.keys(TYPES).join(', ')})`);
   if (r.level !== undefined && !LEVELS[r.level]) errors.push(`unknown level "${r.level}" (use: ${Object.keys(LEVELS).join(', ')})`);
   if (r.source !== undefined && !isText(r.source)) errors.push('"source" must be text');
+  if (r.audience !== undefined) {
+    if (!Array.isArray(r.audience) || !r.audience.length) errors.push('"audience" must be a list, or left out');
+    else for (const a of r.audience) if (!AUDIENCES[a]) errors.push(`unknown audience "${a}" (use: ${Object.keys(AUDIENCES).join(', ')})`);
+  }
   if (r.year !== undefined && !(Number.isInteger(r.year) && r.year >= 1997 && r.year <= 2100)) errors.push('"year" must be a four-digit year');
   if (r.authors !== undefined && !isText(r.authors)) errors.push('"authors" must be text');
   if (r.type === 'werob' && r.year === undefined) errors.push('WEROB resources need a "year"');

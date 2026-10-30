@@ -6,3 +6,5 @@ leagues:
 type: tutorial
 level: beginner
 source: RoboCupJunior
+audience:
+  - educators

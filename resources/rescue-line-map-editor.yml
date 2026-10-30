@@ -1,0 +1,11 @@
+title: Rescue Line map editor
+url: https://osaka.rcj.cloud/service/editor/line/2024
+description: Lay out Rescue Line tiles online to design practice fields or maps for the Rescue Online Simulation.
+leagues:
+  - line
+type: field
+level: intermediate
+source: RoboCupJunior Rescue
+audience:
+  - educators
+  - organizers
