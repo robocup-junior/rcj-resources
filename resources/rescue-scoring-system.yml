@@ -1,0 +1,9 @@
+title: Rescue scoring system
+url: https://github.com/robocup-junior/rcj-rescue-cms
+description: The open-source scoring system used at Rescue competitions. Useful for organizers running events.
+leagues:
+  - line
+  - maze
+type: code
+level: advanced
+source: GitHub

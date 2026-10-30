@@ -1,0 +1,13 @@
+title: "NERA: A Center for Research on Educational Robotics and Automation"
+url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/MartinsFN_NERA.pdf
+description: Paper.
+leagues:
+  - general
+type: werob
+level: intermediate
+source: WEROB 2012, Mexico City
+year: 2012
+authors: Felipe N. Martins, Hudson Cassio G. Oliveira and Eduardo Max Amaral
+links:
+  - label: Slides
+    url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/WEROB_2012_NERA_v3.pdf

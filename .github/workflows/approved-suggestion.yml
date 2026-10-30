@@ -1,0 +1,56 @@
+name: Turn an approved suggestion into a pull request
+
+# When a maintainer adds the "approved" label to a "Suggest a resource" issue, this creates
+# the resource file and opens a pull request for it. Merging the pull request publishes it.
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  pull-request:
+    if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'new resource')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Create the resource file
+        id: file
+        env:
+          # The issue body is untrusted text, so it is only ever passed as data, never run.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          if out=$(node scripts/issue-to-resource.mjs); then
+            echo "path=$out" >> "$GITHUB_OUTPUT"
+          else
+            { echo "I couldn't add this resource yet:"; echo; echo "$out"; echo; echo "Edit the issue to fix this, then remove and re-add the **approved** label."; } > comment.md
+            gh issue comment "$NUMBER" --body-file comment.md
+            gh issue edit "$NUMBER" --remove-label approved
+            exit 1
+          fi
+      - name: Check the link
+        run: node scripts/check-links.mjs --report report.md "${{ steps.file.outputs.path }}" || echo "Link check failed; see the pull request."
+      - name: Open the pull request
+        run: |
+          branch="resource/issue-$NUMBER"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add "${{ steps.file.outputs.path }}"
+          git commit -m "Add resource from #$NUMBER"
+          git push --force origin "$branch"
+          { echo "Adds \`${{ steps.file.outputs.path }}\` from the suggestion in #$NUMBER."; echo; echo "Closes #$NUMBER"; echo; echo "#### Link check"; echo; cat report.md; echo; echo "Check the file looks right, edit it on this branch if needed, then merge to publish it."; } > pr.md
+          pr=$(gh pr list --head "$branch" --json url --jq '.[0].url')
+          if [ -z "$pr" ]; then pr=$(gh pr create --head "$branch" --title "Add resource: $(node -p "require('yaml').parse(require('fs').readFileSync('${{ steps.file.outputs.path }}','utf8')).title")" --body-file pr.md); fi
+          gh issue comment "$NUMBER" --body "Thanks! Pull request ready for review: $pr"

@@ -1,0 +1,10 @@
+title: Rescue documentation and rubrics
+url: https://rescue.rcj.cloud/documents
+description: Documentation templates and the rubrics judges use.
+leagues:
+  - line
+  - maze
+  - sim
+type: rules
+level: intermediate
+source: RoboCupJunior

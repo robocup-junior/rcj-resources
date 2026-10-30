@@ -1,0 +1,10 @@
+title: Image Analysis for Visual Victims on Low Powered Machines
+url: https://junior.robocup.org/wp-content/uploads/2018/2018-WEROB/Visual_Victims.pdf
+description: Letter detection for Rescue Maze on a small, low-cost vision system.
+leagues:
+  - maze
+type: werob
+level: advanced
+source: WEROB 2018, Montreal
+year: 2018
+authors: Daniel Xue and Ethan Wu

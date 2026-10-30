@@ -1,0 +1,8 @@
+title: Soccer league page
+url: https://junior.robocup.org/soccer/
+description: Divisions, current rules, rubrics and news for Soccer.
+leagues:
+  - soccer
+type: rules
+level: beginner
+source: RoboCupJunior

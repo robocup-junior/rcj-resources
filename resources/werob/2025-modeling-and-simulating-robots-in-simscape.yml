@@ -1,0 +1,13 @@
+title: Modeling and Simulating Robots in Simscape
+url: https://drive.google.com/file/d/1KyoEuzBEuWQAZhv4Aa6_sdXkhzcyBVZn/view
+description: "Hands-on workshop: model batteries, motors and a powertrain, then simulate your robot following a route."
+leagues:
+  - general
+type: werob
+level: intermediate
+source: WEROB 2025, Salvador
+year: 2025
+authors: MathWorks (Ascension Vizinho-Coutry and Jose Avendano Arbelaez)
+links:
+  - label: Simulink models
+    url: https://drive.google.com/drive/folders/1bv7ks86D_-aBdaZuhwBjuIUNvZmKJ9d3

@@ -1,0 +1,8 @@
+title: Erebus simulator
+url: https://erebus.rcj.cloud/
+description: The official Rescue Simulation platform, with installation guides.
+leagues:
+  - sim
+type: code
+level: intermediate
+source: RoboCupJunior

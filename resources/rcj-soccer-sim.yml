@@ -1,0 +1,8 @@
+title: RCJ Soccer Sim
+url: https://robocup-junior.github.io/rcj-soccersim/
+description: Webots-based soccer simulator with a sample team to get you going.
+leagues:
+  - soccer
+type: code
+level: intermediate
+source: RoboCupJunior

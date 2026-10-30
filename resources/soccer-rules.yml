@@ -1,0 +1,8 @@
+title: Soccer Rules
+url: https://robocup-junior.github.io/soccer-rules/master/rules.html
+description: The current rules for the 2:2 leagues.
+leagues:
+  - soccer
+type: rules
+level: intermediate
+source: RoboCupJunior

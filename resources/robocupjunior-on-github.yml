@@ -1,0 +1,8 @@
+title: RoboCupJunior on GitHub
+url: https://github.com/robocup-junior
+description: Rules, simulators and open-source tools from the league committees.
+leagues:
+  - general
+type: code
+level: intermediate
+source: GitHub

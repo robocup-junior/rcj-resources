@@ -1,0 +1,8 @@
+title: Rescue Simulation league page
+url: https://junior.robocup.org/rcj-rescue-sim/
+description: Current rules and news for Rescue Simulation. No robot hardware needed.
+leagues:
+  - sim
+type: rules
+level: beginner
+source: RoboCupJunior

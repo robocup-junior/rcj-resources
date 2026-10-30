@@ -1,0 +1,15 @@
+title: "Rescue A, B to CoSpace: Our RoboCupJunior Rescue Experience"
+url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/M&Y_Rescue.pdf
+description: Paper.
+leagues:
+  - line
+  - maze
+  - sim
+type: werob
+level: intermediate
+source: WEROB 2012, Mexico City
+year: 2012
+authors: Mika Chikuma and Yoshiaki Chikuma
+links:
+  - label: Slides
+    url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/M&Y.pdf

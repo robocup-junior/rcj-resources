@@ -1,0 +1,8 @@
+title: Build your own IR ball
+url: https://github.com/robocup-junior/ir-golf-ball
+description: Open-source design files for the IR soccer ball.
+leagues:
+  - soccer
+type: field
+level: intermediate
+source: GitHub

@@ -1,0 +1,9 @@
+title: University of Kassel Rescue tutorials
+url: https://www.uni-kassel.de/eecs/en/robocup/technik-technics/tutorial.html
+description: "Step-by-step tutorials: an Arduino Nano robot, a car-kit robot, a letter sensor and building a maze. The English page is machine-translated."
+leagues:
+  - line
+  - maze
+type: tutorial
+level: intermediate
+source: University of Kassel

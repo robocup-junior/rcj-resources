@@ -1,0 +1,8 @@
+title: Rescue Maze league page
+url: https://junior.robocup.org/rcj-rescue-maze/
+description: Current rules, scoring and news for Rescue Maze.
+leagues:
+  - maze
+type: rules
+level: beginner
+source: RoboCupJunior

@@ -1,0 +1,8 @@
+title: Rescue Maze program design
+url: https://www.microline.hr/EUWeb/HTML.ashx?id=197
+description: How one team structured its maze-solving program in C++ on a microcontroller, and why it stores the maze as a linked list.
+leagues:
+  - maze
+type: tutorial
+level: advanced
+source: Microline

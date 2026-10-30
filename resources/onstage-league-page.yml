@@ -1,0 +1,8 @@
+title: OnStage league page
+url: https://junior.robocup.org/onstage/
+description: Divisions, current rules, scoresheets and news for OnStage.
+leagues:
+  - onstage
+type: rules
+level: beginner
+source: RoboCupJunior

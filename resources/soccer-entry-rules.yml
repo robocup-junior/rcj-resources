@@ -1,0 +1,8 @@
+title: Soccer Entry Rules
+url: https://robocup-junior.github.io/soccer-rules-entry/master/rules.html
+description: The current rules for the 1:1 entry leagues.
+leagues:
+  - soccer
+type: rules
+level: beginner
+source: RoboCupJunior

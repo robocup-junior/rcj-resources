@@ -1,0 +1,32 @@
+name: Check resources
+
+on:
+  pull_request:
+    paths: ["resources/**", "scripts/**", "package*.json"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validate every resource file
+        run: node scripts/build.mjs --check
+      - name: Check links in added or changed files
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          files=$(git diff --name-only --diff-filter=AM "$BASE" HEAD -- 'resources/*.yml' 'resources/**/*.yml')
+          if [ -z "$files" ]; then echo "No resource files changed."; exit 0; fi
+          node scripts/check-links.mjs --report report.md $files || status=$?
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          exit ${status:-0}

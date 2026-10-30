@@ -1,0 +1,8 @@
+title: Rescue Line league page
+url: https://junior.robocup.org/rcj-rescue-line/
+description: Current rules, scoring and news for Rescue Line.
+leagues:
+  - line
+type: rules
+level: beginner
+source: RoboCupJunior

@@ -1,0 +1,8 @@
+title: Erebus robot customiser
+url: https://github.com/robocup-junior/erebus-robot-customisation
+description: Source for the tool where you choose and place your simulated robot’s sensors, such as cameras, LiDAR and GPS.
+leagues:
+  - sim
+type: code
+level: intermediate
+source: GitHub

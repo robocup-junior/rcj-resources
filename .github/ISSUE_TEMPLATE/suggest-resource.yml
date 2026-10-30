@@ -1,0 +1,92 @@
+name: Suggest a resource
+description: Add a guide, tutorial, video, code, field plan or talk to the RoboCupJunior resource library.
+title: "Add resource: "
+labels: ["new resource"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping other teams! Once a maintainer approves your suggestion, it is added to [junior.robocup.org/resources](https://junior.robocup.org/resources/) automatically.
+
+        Please only suggest free resources that are useful to RoboCupJunior teams, mentors or organizers.
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: The name of the resource, as its author gives it.
+      placeholder: Getting Started with Rescue Line
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      description: A full link starting with https://
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: One or two sentences on what it is and who it helps (300 characters at most).
+    validations:
+      required: true
+  - type: checkboxes
+    id: leagues
+    attributes:
+      label: Leagues
+      description: Which leagues is it for? Choose "Any league" if it is useful to everyone.
+      options:
+        - label: Soccer
+        - label: Rescue Line
+        - label: Rescue Maze
+        - label: Rescue Simulation
+        - label: OnStage
+        - label: Any league
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of resource
+      options:
+        - Rules and guides
+        - Tutorials
+        - Code and tools
+        - Fields and equipment
+        - Videos and inspiration
+        - Community
+        - WEROB talks and papers
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Level
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Who made or publishes it, for example "RoboCupJunior Australia", "GitHub" or "YouTube".
+    validations:
+      required: true
+  - type: input
+    id: authors
+    attributes:
+      label: Authors (optional)
+      description: For talks and papers.
+  - type: input
+    id: year
+    attributes:
+      label: Year (optional)
+      description: Required for WEROB talks and papers, for example 2026.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else? (optional)
+      description: Notes for the maintainers. This is not shown on the website.

@@ -1,0 +1,10 @@
+title: Rescue community website
+url: https://rescue.rcj.cloud/
+description: News, events, results and FAQs for all Rescue leagues.
+leagues:
+  - line
+  - maze
+  - sim
+type: community
+level: beginner
+source: RoboCupJunior

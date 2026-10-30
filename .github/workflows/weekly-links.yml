@@ -1,0 +1,42 @@
+name: Weekly link check
+
+# Checks every link once a week. Opens (or updates) a "Broken links" issue when something breaks,
+# and closes it again once everything works.
+on:
+  schedule:
+    - cron: "0 22 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check all links
+        id: check
+        run: |
+          node scripts/check-links.mjs --report report.md || echo "broken=true" >> "$GITHUB_OUTPUT"
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Open, update or close the Broken links issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BROKEN: ${{ steps.check.outputs.broken }}
+        run: |
+          gh label create "broken link" --color d73a4a --description "A resource link has stopped working" 2>/dev/null || true
+          issue=$(gh issue list --label "broken link" --state open --json number --jq '.[0].number')
+          if [ "$BROKEN" = "true" ]; then
+            { echo "The weekly link check found links that no longer work. Fix or remove the files listed below."; echo; cat report.md; } > body.md
+            if [ -n "$issue" ]; then gh issue edit "$issue" --body-file body.md
+            else gh issue create --title "Broken links" --label "broken link" --body-file body.md; fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "All links work again."
+          fi

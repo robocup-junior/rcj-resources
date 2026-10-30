@@ -1,0 +1,8 @@
+title: Soccer communication modules
+url: https://junior.robocup.org/communication-modules/
+description: How the communication module works, with schematics and code on GitHub.
+leagues:
+  - soccer
+type: field
+level: advanced
+source: RoboCupJunior

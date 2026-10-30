@@ -1,0 +1,9 @@
+title: Building Your Own Rescue Field
+url: https://junior.robocup.org/rescue-fields/
+description: Ready-made and DIY options for Rescue Line and Maze fields.
+leagues:
+  - line
+  - maze
+type: field
+level: beginner
+source: RoboCupJunior

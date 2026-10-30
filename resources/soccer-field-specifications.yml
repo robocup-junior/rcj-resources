@@ -1,0 +1,8 @@
+title: Soccer Field Specifications
+url: https://robocup-junior.github.io/soccer-rules/master/field_specification.html
+description: Official field dimensions and materials.
+leagues:
+  - soccer
+type: field
+level: beginner
+source: RoboCupJunior

@@ -1,0 +1,8 @@
+title: Getting Started with Rescue Line
+url: https://www.robocupjunior.org.au/getting-started/
+description: Workshop slides, from basic line following to PID control.
+leagues:
+  - line
+type: tutorial
+level: beginner
+source: RoboCupJunior Australia

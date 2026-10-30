@@ -1,0 +1,13 @@
+title: Abstraction Program and Development of PORON (Personal Oriented Robot for ON STAGE)
+url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2016/paper2.pdf
+description: Paper.
+leagues:
+  - onstage
+type: werob
+level: intermediate
+source: WEROB 2016, Leipzig
+year: 2016
+authors: Keiya Sakamoto, Koto Sakamoto and Toshimi Iga
+links:
+  - label: Slides
+    url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2016/ppt2.pdf

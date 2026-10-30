@@ -1,0 +1,8 @@
+title: Rescue Line rules source
+url: https://github.com/robocup-junior/rescue-line-entry-rules
+description: Where the Rescue Line rules are written and changes are proposed. Compiled versions are under Releases.
+leagues:
+  - line
+type: rules
+level: intermediate
+source: GitHub

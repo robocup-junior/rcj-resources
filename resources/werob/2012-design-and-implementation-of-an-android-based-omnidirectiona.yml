@@ -1,0 +1,13 @@
+title: Design and Implementation of an Android-Based Omnidirectional Robot for the RoboCupJunior Rescue B Competition
+url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/MartinsFN_Emerotecos_Robot_RescueB.pdf
+description: Paper.
+leagues:
+  - maze
+type: werob
+level: advanced
+source: WEROB 2012, Mexico City
+year: 2012
+authors: André S. Oliveira, Gabriel Lima Guimarães, Ivan Seidel Gomes, Matheus P. Canejo da Cunha, Felipe N. Martins and Hudson Cassio G. Oliveira
+links:
+  - label: Slides
+    url: https://web.archive.org/web/2020id_/http://rcj.robocup.org/werob/werob2012/RescueBRobot.pdf
