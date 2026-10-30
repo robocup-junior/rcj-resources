@@ -1,0 +1,11 @@
+title: EVN Alpha libraries and robot builds
+url: https://github.com/EVNdevs
+description: Open-source Arduino and MicroPython libraries, examples and robot builds for EVN Alpha, an RP2040 controller made for teams moving on from LEGO Mindstorms. The controller itself is a paid product.
+leagues:
+  - general
+type: code
+level: intermediate
+source: EVN
+links:
+  - label: MicroPython docs
+    url: https://evn.coresg.tech/

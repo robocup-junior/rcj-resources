@@ -1,0 +1,12 @@
+title: RCJ Soccer Lab
+url: https://robocup-junior.github.io/rcj-soccer-lab/
+description: Learn the Soccer rules with interactive 3D situations and exercises, play simulated matches, and practise refereeing. Covers the current rules and the next year's draft.
+leagues:
+  - soccer
+type: rules
+level: beginner
+source: RoboCupJunior
+audience:
+  - students
+  - educators
+  - organizers
