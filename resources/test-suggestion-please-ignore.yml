@@ -1,0 +1,8 @@
+title: "Test suggestion: please ignore"
+url: https://robocup-junior.github.io/rcj-resources/
+description: Testing the suggestion workflow. This pull request will be closed without merging.
+leagues:
+  - general
+type: community
+level: beginner
+source: RoboCupJunior
