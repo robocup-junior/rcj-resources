@@ -26,10 +26,10 @@ async function check(url) {
   const walled = BOT_WALLED.some(h => host === h || host.endsWith('.' + h));
   const archive = host === 'web.archive.org';
   let last = '';
-  for (let attempt = 0; attempt < (archive ? 4 : 2); attempt++) {
+  for (let attempt = 0; attempt < (archive ? 3 : 2); attempt++) {
     if (attempt) await sleep(archive ? 5000 * attempt : 2000);
     try {
-      const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': UA, Accept: '*/*' }, signal: AbortSignal.timeout(archive ? 90000 : 30000) });
+      const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': UA, Accept: '*/*' }, signal: AbortSignal.timeout(archive ? 45000 : 30000) });
       res.body?.cancel().catch(() => {});
       if (res.ok) return { status: 'ok' };
       last = `HTTP ${res.status}`;
@@ -69,8 +69,18 @@ async function runPool(list, size) {
     while (i < list.length) { const j = list[i++]; j.result = await check(j.url); }
   }));
 }
-// The Wayback Machine throttles parallel requests, so its links go one at a time.
-await Promise.all([runPool(otherJobs, 6), runPool(archiveJobs, 1)]);
+// The Wayback Machine throttles parallel requests, so its links go one at a time. If it keeps
+// refusing, stop asking: the rest are marked unverified rather than taking hours to time out.
+async function runArchive(list) {
+  let failures = 0;
+  for (const j of list) {
+    if (failures >= 3) { j.result = { status: 'unverified', detail: 'skipped (archive unavailable)' }; continue; }
+    j.result = await check(j.url);
+    failures = j.result.status === 'ok' || j.result.status === 'broken' ? 0 : failures + 1;
+    await sleep(1000);
+  }
+}
+await Promise.all([runPool(otherJobs, 6), runArchive(archiveJobs)]);
 
 const broken = jobs.filter(j => j.result.status === 'broken');
 const unverified = jobs.filter(j => j.result.status === 'unverified');
