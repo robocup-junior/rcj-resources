@@ -64,6 +64,8 @@ Run `npm install` once, then `npm run build` to check your file. The pull reques
 
 ## For maintainers
 
+Only the RCJ execs and the Soccer, Rescue and OnStage league committees can approve suggestions and merge pull requests, and `main` only changes through pull requests. Merging is what publishes to the website.
+
 - **Suggestions:** read the issue, check the link, and add the **approved** label. The bot opens a pull request. If the form had a problem, the bot comments on the issue and removes the label, so the issue can be fixed and approved again.
 - **Pull requests from the bot** don't run the "Check resources" workflow, because GitHub doesn't let bot-created pull requests trigger other workflows. The bot runs the same checks itself and puts the link check result in the pull request.
 - **Broken links:** the weekly check opens a **Broken links** issue. Fix the link, swap in a Wayback Machine copy, or delete the file.

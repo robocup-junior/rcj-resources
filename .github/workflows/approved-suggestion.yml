@@ -19,6 +19,20 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       NUMBER: ${{ github.event.issue.number }}
     steps:
+      # Anyone with triage access can add labels, but only people who can merge
+      # (the RCJ execs and league committees) may approve a suggestion.
+      - name: Check the approver can publish
+        env:
+          APPROVER: ${{ github.event.sender.login }}
+        run: |
+          perm=$(gh api "repos/$GITHUB_REPOSITORY/collaborators/$APPROVER/permission" --jq .permission || echo none)
+          case "$perm" in
+            admin|maintain|write) echo "$APPROVER has $perm access." ;;
+            *)
+              gh issue edit "$NUMBER" -R "$GITHUB_REPOSITORY" --remove-label approved
+              gh issue comment "$NUMBER" -R "$GITHUB_REPOSITORY" --body "Only RoboCupJunior maintainers can approve suggestions, so I removed the **approved** label."
+              exit 1 ;;
+          esac
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
