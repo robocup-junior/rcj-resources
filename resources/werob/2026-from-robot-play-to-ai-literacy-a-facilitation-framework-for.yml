@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2026, Incheon
+audience:
+  - educators
 year: 2026
 authors: Chorong Park

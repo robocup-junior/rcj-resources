@@ -7,3 +7,5 @@ leagues:
 type: field
 level: beginner
 source: RoboCupJunior
+audience:
+  - educators

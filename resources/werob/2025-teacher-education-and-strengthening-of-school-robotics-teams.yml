@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2025, Salvador
+audience:
+  - educators
 year: 2025
 authors: Karine Heloise Felix de Sousa and Valderi Pereira Silva

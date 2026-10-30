@@ -1,5 +1,5 @@
 // Checks that every link in the given resource files (or all of them) still works.
-// Usage: node scripts/check-links.mjs [--report report.md] [file ...]
+// Usage: node scripts/check-links.mjs [--report report.md] [--since <git ref>] [file ...]
 // Exit code 1 when a link is broken. Sites that block automated requests are reported
 // as "could not verify" without failing, since they work fine in a browser.
 import { writeFileSync } from 'node:fs';
@@ -9,13 +9,15 @@ import { loadAll, listFiles } from './lib.mjs';
 const args = process.argv.slice(2);
 const reportAt = args.indexOf('--report');
 const reportFile = reportAt >= 0 ? args.splice(reportAt, 2)[1] : null;
+const sinceAt = args.indexOf('--since');
+const sinceRef = sinceAt >= 0 ? args.splice(sinceAt, 2)[1] : null;
 const files = args.length ? args.map(f => resolve(f)) : listFiles();
 
 const { resources, errors } = loadAll(files);
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 
 // These sites answer scripts with 403/429 (Cloudflare and similar) even when the page exists.
-const BOT_WALLED = ['printables.com', 'thingiverse.com', 'mathworks.com', 'instructables.com', 'youtube.com', 'youtu.be', 'facebook.com', 'linkedin.com'];
+const BOT_WALLED = ['printables.com', 'sagepub.com', 'doi.org', 'thingiverse.com', 'mathworks.com', 'instructables.com', 'youtube.com', 'youtu.be', 'facebook.com', 'linkedin.com'];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 rcj-resources-link-check';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -32,15 +34,32 @@ async function check(url) {
       if (res.ok) return { status: 'ok' };
       last = `HTTP ${res.status}`;
       if ((res.status === 403 || res.status === 429) && walled) return { status: 'unverified', detail: last };
-      if (res.status === 404 || res.status === 410) break;
+      // 520-524 are Cloudflare's "the site behind me is temporarily unreachable" codes.
+      if (res.status >= 520 && res.status <= 524 && attempt) return { status: 'unverified', detail: last + ' (server temporarily unavailable)' };
+      if (res.status === 404 || res.status === 410) return { status: 'broken', detail: last };
     } catch (e) {
       last = e.name === 'TimeoutError' ? 'timed out' : (e.cause?.code || e.message);
     }
   }
+  // The Wayback Machine throttles and drops connections under load; only a "not found" means a dead copy.
+  if (archive) return { status: 'unverified', detail: last + ' (archive busy)' };
   return { status: 'broken', detail: last };
 }
 
-const jobs = resources.flatMap(r => [{ r, url: r.url, what: 'link' }, ...(r.links || []).map(x => ({ r, url: x.url, what: x.label }))]);
+// With --since <git ref>, skip links that were already in the library at that ref (used on pull requests).
+let known = new Set();
+if (sinceRef) {
+  const { execFileSync } = await import('node:child_process');
+  const { parse } = await import('yaml');
+  for (const r of resources) {
+    try {
+      const old = parse(execFileSync('git', ['show', `${sinceRef}:${r.file}`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }));
+      [old.url, ...(old.links || []).map(x => x.url)].forEach(u => known.add(r.file + ' ' + u));
+    } catch { /* new file */ }
+  }
+}
+const jobs = resources.flatMap(r => [{ r, url: r.url, what: 'link' }, ...(r.links || []).map(x => ({ r, url: x.url, what: x.label }))])
+  .filter(j => !known.has(j.r.file + ' ' + j.url));
 const archiveJobs = jobs.filter(j => new URL(j.url).hostname === 'web.archive.org');
 const otherJobs = jobs.filter(j => !archiveJobs.includes(j));
 

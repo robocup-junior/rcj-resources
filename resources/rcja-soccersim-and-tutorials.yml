@@ -6,3 +6,5 @@ leagues:
 type: code
 level: beginner
 source: RoboCupJunior Australia
+audience:
+  - educators

@@ -6,5 +6,8 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2012, Mexico City
+audience:
+  - educators
+  - organizers
 year: 2012
 authors: Diana Matarrita and Jorge Lopez

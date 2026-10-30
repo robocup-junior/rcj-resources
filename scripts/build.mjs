@@ -2,7 +2,7 @@
 // Usage: node scripts/build.mjs [--check]   (--check validates only, without writing dist/)
 import { mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, LEAGUES, TYPES, LEVELS, loadAll } from './lib.mjs';
+import { ROOT, LEAGUES, TYPES, LEVELS, AUDIENCES, loadAll } from './lib.mjs';
 
 const { resources, errors } = loadAll();
 if (errors.length) {
@@ -15,7 +15,7 @@ if (process.argv.includes('--check')) process.exit(0);
 const out = {
   generated: new Date().toISOString(),
   count: resources.length,
-  labels: { leagues: LEAGUES, types: TYPES, levels: LEVELS },
+  labels: { leagues: LEAGUES, types: TYPES, levels: LEVELS, audiences: AUDIENCES },
   resources: resources.map(({ file, ...r }) => ({ id: file.replace(/^resources\//, '').replace(/\.ya?ml$/, ''), ...r })),
 };
 const dist = join(ROOT, 'dist');

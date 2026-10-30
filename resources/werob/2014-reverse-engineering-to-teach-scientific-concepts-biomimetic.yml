@@ -6,6 +6,8 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2014, João Pessoa
+audience:
+  - educators
 year: 2014
 authors: Vivek Kumar
 links:

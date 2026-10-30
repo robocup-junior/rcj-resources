@@ -6,3 +6,5 @@ leagues:
 type: community
 level: beginner
 source: Discord
+audience:
+  - educators

@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2016, Leipzig
+audience:
+  - educators
 year: 2016
 authors: Federico Andrade

@@ -27,6 +27,6 @@ jobs:
         run: |
           files=$(git diff --name-only --diff-filter=AM "$BASE" HEAD -- 'resources/*.yml' 'resources/**/*.yml')
           if [ -z "$files" ]; then echo "No resource files changed."; exit 0; fi
-          node scripts/check-links.mjs --report report.md $files || status=$?
+          node scripts/check-links.mjs --report report.md --since "$BASE" $files || status=$?
           cat report.md >> "$GITHUB_STEP_SUMMARY"
           exit ${status:-0}

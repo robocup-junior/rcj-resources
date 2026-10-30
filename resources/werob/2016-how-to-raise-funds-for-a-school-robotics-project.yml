@@ -6,5 +6,8 @@ leagues:
 type: werob
 level: beginner
 source: WEROB 2016, Leipzig
+audience:
+  - educators
+  - organizers
 year: 2016
 authors: Alejandro A. Barranco Candanedo

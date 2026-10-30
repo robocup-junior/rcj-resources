@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: intermediate
 source: WEROB 2026, Incheon
+audience:
+  - educators
 year: 2026
 authors: Ömer Faruk Aksoy, Yağız Ekrem Dalar, Feyzi Arda Salihoğlu, Ahmet Rıfat Öztürk and Nedim Mutlu Sezer

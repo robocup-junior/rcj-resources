@@ -6,3 +6,5 @@ leagues:
 type: video
 level: beginner
 source: RoboCupJunior
+audience:
+  - educators

@@ -6,5 +6,7 @@ leagues:
 type: werob
 level: beginner
 source: WEROB 2019, Sydney
+audience:
+  - educators
 year: 2019
 authors: Damien Kee

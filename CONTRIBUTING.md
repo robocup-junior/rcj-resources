@@ -4,7 +4,7 @@ The easiest way is the **[Suggest a resource](../../issues/new?template=suggest-
 
 ## What belongs here
 
-Free resources that help RoboCupJunior teams, mentors or organizers: rules and guides, tutorials, open-source code and tools, field and equipment plans, videos, community spaces, and WEROB talks and papers.
+Free resources that help RoboCupJunior teams, mentors or organizers: rules and guides, tutorials, open-source code and tools, field and equipment plans, videos, community spaces, teaching and curriculum material, research about RoboCupJunior, and WEROB talks and papers.
 
 - Link to the **current version** of rules and guides, not a copy that will go out of date.
 - Prefer resources that work for **any platform** over ones tied to one kit or brand.
@@ -12,7 +12,7 @@ Free resources that help RoboCupJunior teams, mentors or organizers: rules and g
 
 ## One file per resource
 
-Add a file to `resources/` named after the title, for example `resources/getting-started-with-rescue-line.yml`. WEROB talks and papers go in `resources/werob/`, starting with the year, for example `resources/werob/2026-my-talk.yml`.
+Add a file to `resources/` named after the title, for example `resources/getting-started-with-rescue-line.yml`. WEROB talks and papers go in `resources/werob/`, starting with the year, for example `resources/werob/2026-my-talk.yml`. Research papers go in `resources/research/` the same way. Only add papers that are free to read.
 
 ```yaml
 title: Getting Started with Rescue Line
@@ -31,10 +31,11 @@ source: RoboCupJunior Australia
 | `url` | yes | A full link starting with `https://`. |
 | `description` | yes | One or two sentences, 300 characters at most. |
 | `leagues` | yes | One or more of `soccer`, `line` (Rescue Line), `maze` (Rescue Maze), `sim` (Rescue Simulation), `onstage`, `general` (useful for any league). |
-| `type` | yes | One of `rules`, `tutorial`, `code`, `field`, `video`, `community`, `werob`. |
+| `type` | yes | One of `rules`, `tutorial`, `code`, `field`, `video`, `community`, `teaching` (curriculum and classroom material), `research` (published papers), `werob`. |
 | `level` | yes | `beginner`, `intermediate` or `advanced`. |
 | `source` | yes | Who made or publishes it, for example `RoboCupJunior Australia` or `GitHub`. For WEROB, use `WEROB <year>, <city>`. |
-| `year` | WEROB only | The year of the workshop. |
+| `audience` | no | Who besides teams it is especially for: a list of `students`, `educators`, `organizers`. Resources marked `educators` also appear on the [For Educators](https://junior.robocup.org/for-educators/) page. |
+| `year` | WEROB only | The year of the workshop (or of publication, for research papers). |
 | `authors` | no | For talks and papers. |
 | `links` | no | Extra links shown on the card, such as slides: a list of `label` and `url`. |
 

@@ -6,3 +6,5 @@ leagues:
 type: community
 level: intermediate
 source: RoboCupJunior
+audience:
+  - educators

@@ -6,3 +6,5 @@ leagues:
 type: code
 level: intermediate
 source: MathWorks
+audience:
+  - educators

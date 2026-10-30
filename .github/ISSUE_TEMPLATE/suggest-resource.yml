@@ -55,6 +55,8 @@ body:
         - Fields and equipment
         - Videos and inspiration
         - Community
+        - Teaching and curriculum
+        - Research papers
         - WEROB talks and papers
     validations:
       required: true
@@ -75,6 +77,15 @@ body:
       description: Who made or publishes it, for example "RoboCupJunior Australia", "GitHub" or "YouTube".
     validations:
       required: true
+  - type: checkboxes
+    id: audience
+    attributes:
+      label: Especially useful for (optional)
+      description: Leave blank if it is mainly for teams.
+      options:
+        - label: Students
+        - label: Educators
+        - label: Organizers
   - type: input
     id: authors
     attributes:
