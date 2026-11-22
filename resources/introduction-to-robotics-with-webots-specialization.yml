@@ -1,0 +1,12 @@
+title: Introduction to Robotics with Webots Specialization
+url: https://www.coursera.org/specializations/introduction-robotics-webots
+description: An online course on robotics with the Webots simulator, which Rescue Simulation runs on. Good preparation for new simulation teams.
+leagues:
+  - sim
+type: teaching
+level: beginner
+source: Coursera (University of Colorado Boulder)
+audience:
+  - students
+  - educators
+authors: Nikolaus Correll
