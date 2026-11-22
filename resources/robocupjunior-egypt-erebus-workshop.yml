@@ -1,0 +1,11 @@
+title: RoboCupJunior Egypt Erebus Workshop
+url: https://www.rcjegypt.org/tutorials/erebus-workshop
+description: A 4-video workshop from RoboCupJunior Egypt (Feb 2024) on the Erebus simulator used in Rescue Simulation.
+leagues:
+  - sim
+type: tutorial
+level: beginner
+source: RoboCupJunior Egypt
+audience:
+  - students
+year: 2024
