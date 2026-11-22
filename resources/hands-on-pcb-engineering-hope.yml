@@ -1,0 +1,12 @@
+title: Hands-On PCB Engineering (HOPE)
+url: https://hope.berkie.ee/
+description: A free, student-run UC Berkeley course on designing PCBs in KiCad, from schematics and footprints to layout, microcontrollers and soldering. It has public slides, readings and step-by-step labs.
+leagues:
+  - general
+type: tutorial
+level: intermediate
+source: IEEE at UC Berkeley
+audience:
+  - students
+  - educators
+year: 2026
