@@ -22,6 +22,7 @@ resources/*.yml ──merge to main──► GitHub Action ──► resources.j
 - **[Publish to website](.github/workflows/publish.yml)** builds [`resources.json`](https://robocup-junior.github.io/rcj-resources/resources.json) and publishes it to GitHub Pages.
 - **[Weekly link check](.github/workflows/weekly-links.yml)** checks every link each week and opens a **Broken links** issue if any stop working.
 - **[Approved suggestion](.github/workflows/approved-suggestion.yml)** turns an approved suggestion issue into a pull request.
+- **[Duplicate check](.github/workflows/check-suggestion.yml)** labels a new suggestion **duplicate** if its links are already in the library or in an earlier open suggestion.
 
 The website page loads `resources.json` when someone visits. If GitHub can't be reached, it shows a built-in copy instead.
 

@@ -1,0 +1,57 @@
+name: Check a suggestion for duplicates
+
+# When a "Suggest a resource" issue is opened or edited, this looks for its links in the library and in
+# earlier open suggestions. If it finds any, it adds the "duplicate" label and a comment listing them.
+# It updates that one comment when the issue is edited, and removes the label once nothing matches.
+on:
+  issues:
+    types: [opened, edited, reopened, labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: duplicate-check-${{ github.event.issue.number }}
+
+jobs:
+  check:
+    if: contains(github.event.issue.labels.*.name, 'new resource') && (github.event.action != 'labeled' || github.event.label.name == 'new resource')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Look for duplicates
+        env:
+          # The issue body is untrusted text, so it is only ever passed as data, never run.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue list -R "$GITHUB_REPOSITORY" --label "new resource" --state open --limit 500 --json number,body > open.json
+          node scripts/check-suggestion.mjs open.json > result.md
+      - name: Comment and label
+        run: |
+          marker='<!-- duplicate-check -->'
+          comment=$(gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --paginate \
+            --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"$marker\"))) | .id" | head -1)
+          if [ -s result.md ]; then
+            { echo "$marker"; cat result.md; } > comment.md
+            if [ -n "$comment" ]; then
+              gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment" -F body=@comment.md > /dev/null
+            else
+              gh issue comment "$NUMBER" -R "$GITHUB_REPOSITORY" --body-file comment.md
+            fi
+            gh issue edit "$NUMBER" -R "$GITHUB_REPOSITORY" --add-label duplicate
+          elif [ -n "$comment" ]; then
+            # Only undo what this check did: it found duplicates before, and now there are none.
+            { echo "$marker"; echo "No duplicates found any more."; } > comment.md
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment" -F body=@comment.md > /dev/null
+            gh issue edit "$NUMBER" -R "$GITHUB_REPOSITORY" --remove-label duplicate || true
+          fi

@@ -4,19 +4,11 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { stringify } from 'yaml';
-import { ROOT, RESOURCES_DIR, LEAGUES, TYPES, LEVELS, AUDIENCES, slugify, validate, loadAll } from './lib.mjs';
+import { ROOT, RESOURCES_DIR, LEAGUES, TYPES, LEVELS, AUDIENCES, slugify, validate, loadAll, parseIssue, parseExtraLinks, findDuplicates, linksOf } from './lib.mjs';
 
 const body = process.argv[2] ? readFileSync(process.argv[2], 'utf8') : process.env.ISSUE_BODY || '';
 
-// Issue forms render each field as "### Label" followed by the answer.
-const sections = {};
-for (const part of body.replace(/\r\n/g, '\n').split(/^### /m).slice(1)) {
-  const nl = part.indexOf('\n');
-  const label = part.slice(0, nl).trim();
-  const value = part.slice(nl + 1).trim();
-  sections[label] = value === '_No response_' ? '' : value;
-}
-const get = label => (sections[label] || '').trim();
+const get = parseIssue(body);
 const byLabel = map => Object.fromEntries(Object.entries(map).map(([k, v]) => [v.toLowerCase(), k]));
 
 const ticked = (label, map) => get(label).split('\n')
@@ -38,11 +30,13 @@ const r = {
 if (audience.length) r.audience = audience;
 if (get('Authors (optional)')) r.authors = get('Authors (optional)');
 if (get('Year (optional)')) r.year = Number(get('Year (optional)'));
+const extra = parseExtraLinks(get('Other links (optional)'));
+if (extra.links.length) r.links = extra.links;
 
-const problems = validate(r);
-const key = (r.url || '').replace(/\/+$/, '').toLowerCase();
-const existing = loadAll().resources.find(x => x.url.replace(/\/+$/, '').toLowerCase() === key);
-if (existing) problems.push(`this link is already in the library as \`${existing.file}\``);
+const problems = [...validate(r), ...extra.problems];
+for (const d of findDuplicates(linksOf(r), loadAll().resources)) {
+  problems.push(`${d.link} is already in the library, in \`${d.file}\` (${d.title})`);
+}
 if (problems.length) {
   console.log(problems.map(p => '- ' + p).join('\n'));
   process.exit(1);

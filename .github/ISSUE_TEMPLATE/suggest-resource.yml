@@ -26,6 +26,15 @@ body:
     validations:
       required: true
   - type: textarea
+    id: links
+    attributes:
+      label: Other links (optional)
+      description: |
+        Related links, such as the code, slides or a paper that go with a video. Put one per line, with a short label before the link.
+      placeholder: |
+        Code on GitHub: https://github.com/...
+        Slides (PDF): https://...
+  - type: textarea
     id: description
     attributes:
       label: Description
