@@ -1,0 +1,10 @@
+title: RoboCupJunior Egypt Arduino Tutorials
+url: https://www.rcjegypt.org/tutorials/arduino
+description: 5 free video tutorials from RoboCupJunior Egypt on Arduino, useful for building and programming robots for any league.
+leagues:
+  - general
+type: tutorial
+level: beginner
+source: RoboCupJunior Egypt
+audience:
+  - students
