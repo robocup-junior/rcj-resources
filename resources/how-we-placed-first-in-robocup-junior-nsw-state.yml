@@ -1,0 +1,17 @@
+title: How we placed first in RoboCup Junior NSW State
+url: https://hamzah.syedahmed.net/posts/robocup/
+description: "A detailed write-up of a 2026 NSW Open Soccer winning robot: mecanum drive, dribbler, custom PCB, Rust firmware, behaviour tree and computer vision, with open-source code."
+leagues:
+  - soccer
+type: tutorial
+level: advanced
+source: Hamzah Ahmed (blog)
+audience:
+  - students
+authors: Hamzah Ahmed
+year: 2026
+links:
+  - label: Code, PCB and CAD on GitHub
+    url: https://github.com/debater-coder/robocup-26
+  - label: Highlights video
+    url: https://www.youtube.com/watch?v=YMHtccQzc7o
